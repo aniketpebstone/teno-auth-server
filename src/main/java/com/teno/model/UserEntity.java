@@ -1,6 +1,7 @@
 package com.teno.model;
 
 import javax.persistence.Entity;
+import javax.persistence.Id;
 
 import lombok.Data;
 
@@ -8,6 +9,7 @@ import lombok.Data;
 @Entity
 public class UserEntity {
 	
+	@Id
 	private int id;
 	private String password;
 	private String phone;

@@ -2,6 +2,7 @@ package com.teno.service;
 
 import javax.annotation.PostConstruct;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
@@ -13,6 +14,8 @@ import com.teno.repo.UserRepository;
 
 @Service
 public class TenoUserDetailsService implements UserDetailsService{
+	
+	@Autowired
 	private UserRepository userRepository;
 
 	@PostConstruct
