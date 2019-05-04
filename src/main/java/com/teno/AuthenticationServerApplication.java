@@ -24,25 +24,19 @@ import com.teno.model.TenoUserDetails;
 public class AuthenticationServerApplication {
 	
 	 @RequestMapping(value = { "/user" }, produces = "application/json")
-	 public Object user(OAuth2Authentication user) 
-	 {		
-	        Map<String, Object> userInfo = new HashMap<>();
-	        
-	        userInfo.put("user", user.getPrincipal());
-	        userInfo.put("scope", user.getOAuth2Request().getScope());
-	        
-	        return userInfo;
+	 public Object user(OAuth2Authentication auth2Authentication) 
+	 {	
+		 HashMap<String, Object> map=new HashMap<>();
+		 //map.put("user", principal);
+		 map.put("user_name", auth2Authentication.getName());
+		 map.put("authorities", auth2Authentication.getAuthorities());
+		 map.put("scope", auth2Authentication.getOAuth2Request().getScope());
+		 map.put("client_id", auth2Authentication.getOAuth2Request().getClientId());
+		 map.put("email", ((TenoUserDetails)auth2Authentication.getUserAuthentication().getPrincipal()).getUser().getEmail());
+		 map.put("phone", ((TenoUserDetails)auth2Authentication.getUserAuthentication().getPrincipal()).getUser().getPhone());
+		 return map;
 	 }
-	 @RequestMapping(value = { "/teno-user" }, produces = "application/json")
-	 public Object tenoUser(Principal principal) 
-	 {				 
-		 if(principal instanceof TenoUserDetails)
-		 {
-			 TenoUserDetails userDetails=(TenoUserDetails) principal;
-			 return userDetails.getUser();
-		 }
-		 return principal;
-	 }
+	
 	 
 	 public static void main(String[] args) {
 		SpringApplication.run(AuthenticationServerApplication.class, args);
