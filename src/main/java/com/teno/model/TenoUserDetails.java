@@ -31,7 +31,7 @@ public class TenoUserDetails implements UserDetails{
 	public Collection<? extends GrantedAuthority> getAuthorities() {
 		// TODO Auto-generated method stub
 		List<SimpleGrantedAuthority> auths = new java.util.ArrayList<SimpleGrantedAuthority>();		
-        auths.add(new SimpleGrantedAuthority(user.getRole()));
+        auths.add(new SimpleGrantedAuthority(Role.valueOf(user.getRoleId()).get().name()));
         return auths;    
 	}
 
@@ -50,7 +50,7 @@ public class TenoUserDetails implements UserDetails{
 	@Override
 	public boolean isAccountNonExpired() {
 		// TODO Auto-generated method stub
-		return true;
+		return !user.getIsDeleted();
 	}
 
 	@Override
@@ -68,7 +68,7 @@ public class TenoUserDetails implements UserDetails{
 	@Override
 	public boolean isEnabled() {
 		// TODO Auto-generated method stub
-		return true;
+		return user.getIsActive();
 	}
 
 }

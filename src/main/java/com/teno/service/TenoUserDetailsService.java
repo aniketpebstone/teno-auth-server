@@ -18,11 +18,11 @@ public class TenoUserDetailsService implements UserDetailsService{
 	@Autowired
 	private UserRepository userRepository;
 
-	@PostConstruct
+	/*@PostConstruct
     public void initialize()
     {
 		userRepository.save(new UserEntity(1,"aniket","989822223","aniket.paranjpe@pebstone.com","12234444","ADMIN"));        
-    }
+    }*/
 	  
 	@Override
 	public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
