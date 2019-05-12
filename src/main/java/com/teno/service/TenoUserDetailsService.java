@@ -45,4 +45,9 @@ public class TenoUserDetailsService implements UserDetailsService{
 		return new TenoUserDetails(user);		
 	}
 	
+	public void createTenoUser(UserEntity user)
+	{
+		userRepository.save(user);
+	}
+	
 }
