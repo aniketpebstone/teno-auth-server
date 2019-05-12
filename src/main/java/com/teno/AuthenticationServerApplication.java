@@ -22,13 +22,9 @@ public class AuthenticationServerApplication {
 	 public Object user(OAuth2Authentication auth2Authentication) 
 	 {	
 		 HashMap<String, Object> map=new HashMap<>();
-		 //map.put("user", principal);
-		 map.put("user_name", auth2Authentication.getName());
+		 map.put("user", ((TenoUserDetails)auth2Authentication.getUserAuthentication().getPrincipal()).getUser());
 		 map.put("authorities", auth2Authentication.getAuthorities());
-		 map.put("scope", auth2Authentication.getOAuth2Request().getScope());
-		 map.put("client_id", auth2Authentication.getOAuth2Request().getClientId());
-		 map.put("email", ((TenoUserDetails)auth2Authentication.getUserAuthentication().getPrincipal()).getUser().getEmail());
-		 map.put("phone", ((TenoUserDetails)auth2Authentication.getUserAuthentication().getPrincipal()).getUser().getPhone());
+		 map.put("oauth2Request", auth2Authentication.getOAuth2Request());		 
 		 return map;
 	 }
 	
