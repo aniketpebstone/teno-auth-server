@@ -13,7 +13,8 @@ public class Oauth2Config  extends AuthorizationServerConfigurerAdapter
 	
 	@Autowired
 	private AuthenticationManager authenticationManager;
-
+	
+	
 	@Override
 	public void configure(AuthorizationServerEndpointsConfigurer endpoints) throws Exception {		
 		endpoints.authenticationManager(authenticationManager);
@@ -27,12 +28,16 @@ public class Oauth2Config  extends AuthorizationServerConfigurerAdapter
                 .scopes("webclient", "mobileclient");
     }
 	 
+	  
 	 @Override
 	 public void configure(AuthorizationServerSecurityConfigurer oauthServer)
 	            throws Exception {
 	        oauthServer
 	                .tokenKeyAccess("permitAll()")
 	                .checkTokenAccess("permitAll()");
+	        		
+	                
 	    }
+	 
 	 	   
 }

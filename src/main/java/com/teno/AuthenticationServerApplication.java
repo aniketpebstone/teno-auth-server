@@ -5,7 +5,6 @@ import java.util.HashMap;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.oauth2.config.annotation.web.configuration.EnableAuthorizationServer;
 import org.springframework.security.oauth2.config.annotation.web.configuration.EnableResourceServer;
 import org.springframework.security.oauth2.provider.OAuth2Authentication;
@@ -37,11 +36,11 @@ public class AuthenticationServerApplication {
 		 return map;
 	 }
 	 
-	 @PostMapping(value = { "/create-user" }, produces = "application/json")
-	 public void createUser(@RequestBody UserEntity user) 
+	 @PostMapping(value = { "/create-user" })
+	 public String createUser(@RequestBody UserEntity user) 
 	 {	
 		 userDetailsService.createTenoUser(user);
-		 System.out.println("User created successfully!");
+		 return "User created successfully!";
 	 }
 	
 	 
