@@ -21,22 +21,22 @@ public class TenoUserDetailsService implements UserDetailsService{
 	@Autowired
 	private UserRepository userRepository;
 
-	@PostConstruct
-    public void initialize()
-    {
-		UserEntity user=new UserEntity();
-		user.setId(1);
-		user.setPassword("aniket");
-		user.setFirstName("Aniket");
-		user.setLastName("Paranjpe");
-		user.setEmail("aniket.paranjpe@pebstone.com");
-		user.setPhone("1234524244");
-		user.setRoleId(Role.ADMIN.value);
-		user.setIsActive(true);
-		user.setIsDeleted(false);
-		userRepository.save(user);		
-		
-    }
+//	@PostConstruct
+//    public void initialize()
+//    {
+//		UserEntity user=new UserEntity();
+//		user.setId(1);
+//		user.setPassword("aniket");
+//		user.setFirstName("Aniket");
+//		user.setLastName("Paranjpe");
+//		user.setEmail("aniket.paranjpe@pebstone.com");
+//		user.setPhone("1234524244");
+//		user.setRoleId(Role.ADMIN.value);
+//		user.setIsActive(true);
+//		user.setIsDeleted(false);
+//		userRepository.save(user);		
+//		
+//    }
 	  
 	@Override
 	public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
