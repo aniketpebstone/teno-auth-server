@@ -1,5 +1,5 @@
 
-package no.tusla;
+package com.teno;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
